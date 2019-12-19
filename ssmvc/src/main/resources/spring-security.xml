@@ -7,12 +7,20 @@
           http://www.springframework.org/schema/security
           http://www.springframework.org/schema/security/spring-security.xsd">
 
+    <!--spring -->
     <security:http>
+        <!-- pattern: 要拦截的资源-->
+        <security:intercept-url pattern="/**" access="isFullyAuthenticated()"/>
         <security:http-basic/>
     </security:http>
 
     <security:authentication-manager>
-
+        <security:authentication-provider>
+            <security:user-service>
+                <!-- PasswordEncoderFactories定义加密方式 -->
+                <security:user name="admin" password="{noop}123456" authorities="ROLE_USER"/>
+            </security:user-service>
+        </security:authentication-provider>
     </security:authentication-manager>
 
 </beans>

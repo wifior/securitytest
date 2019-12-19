@@ -14,14 +14,12 @@
     <!--package scan -->
     <context:component-scan base-package="com.test"/>
 
-    <!-- 默认会帮我们注册默认处理请求，参数和返回值的类 -->
     <mvc:annotation-driven/>
 
-    <mvc:default-servlet-handler/>
+    <mvc:resources mapping="/static/**" location="/static/"/>
 
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
         <property name="prefix" value="/WEB-INF/views/"/>
         <property name="suffix" value=".jsp"/>
-
     </bean>
 </beans>

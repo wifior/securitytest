@@ -1,16 +1,18 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%
-  String path = request.getContextPath();
-  String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
-%>
+
 <html>
 <head>
+    <%
+        String path = request.getContextPath();
+        String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+    %>
+    <base href="<%=basePath%>">
     <title>Title</title>
     <link href="/static/css/style.css" rel="stylesheet" type="text/css">
 </head>
 <body>
 <div class="wrapper">
-    <div class="header">Login to <span>iyaq</span></div>
+    <div class="header">Login to <span>ssmvc</span></div>
     <form action="" method="post">
         <ul>
             <li>
