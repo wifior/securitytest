@@ -10,9 +10,16 @@
     <!--spring -->
     <security:http>
         <!-- pattern: 要拦截的资源-->
+
+        <security:intercept-url pattern="/loginTest" access="permitAll()"/>
+        <security:intercept-url pattern="/static/**" access="isAnonymous()"/>
         <security:intercept-url pattern="/**" access="isFullyAuthenticated()"/>
-        <security:http-basic/>
+        <!--<security:http-basic/>-->
+        <security:form-login login-page="/loginTest" login-processing-url="/loginForm" default-target-url="/index"/>
+
+        <security:csrf disabled="true"/>
     </security:http>
+
 
     <security:authentication-manager>
         <security:authentication-provider>

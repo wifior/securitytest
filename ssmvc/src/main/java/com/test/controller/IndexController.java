@@ -13,4 +13,9 @@ public class IndexController {
     public String index(){
         return prefix+"index";
     }
+    @RequestMapping("/loginTest")
+    public String login(){
+        return prefix+"login";
+    }
+
 }
