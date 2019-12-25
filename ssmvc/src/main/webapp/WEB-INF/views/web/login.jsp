@@ -12,7 +12,7 @@
 <body>
 <div class="wrapper">
     <div class="header">Login to <span>ssmvc</span></div>
-    <form action="${pageContext.request.contextPath}/loginForm" method="post">
+    <form action="${pageContext.request.contextPath}/login" method="post">
         <ul>
             <li>
                 <div class="text"><span class="name"></span><input type="text" name="username" placeholder="请输入用户名"></div>

@@ -15,19 +15,35 @@
         <security:intercept-url pattern="/static/**" access="isAnonymous()"/>
         <security:intercept-url pattern="/**" access="isFullyAuthenticated()"/>
         <!--<security:http-basic/>-->
-        <security:form-login login-page="/loginTest" login-processing-url="/loginForm" default-target-url="/index"/>
+        <security:form-login login-page="/loginTest" login-processing-url="/login" default-target-url="/index"/> <!--authentication-success-handler-ref="myAuthenticationSuccessHandler"-->
+
+        <security:access-denied-handler error-page="/error"/>
 
         <security:csrf disabled="true"/>
+
+        <security:session-management session-fixation-protection="none" />
     </security:http>
 
 
     <security:authentication-manager>
-        <security:authentication-provider>
-            <security:user-service>
+        <!--自定义UserDetailService方式-->
+        <security:authentication-provider user-service-ref="myUserDetailService">
+         <!--   <security:user-service>
+            </security:user-service>-->
                 <!-- PasswordEncoderFactories定义加密方式 -->
-                <security:user name="admin" password="{noop}123456" authorities="ROLE_USER"/>
-            </security:user-service>
+               <!-- <security:user name="admin" password="{noop}123456" authorities="ROLE_USER"/>-->
+
         </security:authentication-provider>
     </security:authentication-manager>
+
+   <!-- <bean id="sessionFixationProtectionStrategy" class="org.springframework.security.web.authentication.session.ChangeSessionIdAuthenticationStrategy" />
+
+    <bean id="authenticationFilter" class="org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter">
+        <property name="sessionAuthenticationStrategy" ref="sessionFixationProtectionStrategy" />
+    </bean>-->
+
+    <bean id="myUserDetailService" class="com.test.security.MyUserDetailService"/>
+
+   <!-- <bean id="myAuthenticationSuccessHandler" class="com.test.security.MyAuthenticationSuccessHandler"/>-->
 
 </beans>

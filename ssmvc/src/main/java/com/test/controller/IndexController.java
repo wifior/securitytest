@@ -17,5 +17,9 @@ public class IndexController {
     public String login(){
         return prefix+"login";
     }
+    @RequestMapping("/error")
+    public String error(){
+        return prefix+"error";
+    }
 
 }

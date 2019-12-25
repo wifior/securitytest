@@ -63,6 +63,13 @@
       <scope>provided</scope>
       <!--对于scope=provided的情况，则可以认为这个provided是目标容器已经provide这个artifact。-->
     </dependency>
+
+    <dependency>
+      <groupId>com.fasterxml.jackson.core</groupId>
+      <artifactId>jackson-databind</artifactId>
+      <version>2.10.0</version>
+    </dependency>
+
   </dependencies>
 
   <build>
@@ -83,7 +90,7 @@
           <artifactId>tomcat7-maven-plugin</artifactId>
           <version>2.2</version>
           <configuration>
-            <port>8000</port>
+            <port>8080</port>
             <path>/</path>
             <server>tomcat7</server>
           </configuration>
